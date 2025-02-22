@@ -1,6 +1,6 @@
 import 'package:barber_application/presentation/system_design/app_sizes.dart';
 import 'package:barber_application/presentation/system_design/app_sizes.dart';
-import 'package:barber_application/presentation/ui/screens/home_screen.dart';
+import 'package:barber_application/presentation/ui/screens/home/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';

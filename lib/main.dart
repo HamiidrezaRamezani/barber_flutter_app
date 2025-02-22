@@ -1,4 +1,4 @@
-import 'package:barber_application/presentation/ui/screens/home_screen.dart';
+import 'package:barber_application/presentation/ui/screens/home/home_screen.dart';
 import 'package:barber_application/presentation/ui/screens/index_screen.dart';
 import 'package:flutter/material.dart';
 

@@ -12,4 +12,5 @@ class AppColors{
   static Color secondaryBtnColor = Color(0xFFC7CDD9);
 
   static Color whiteColor = Color(0xFFFFFFFF);
+  static Color goldColor = Color(0xFFD3BA4C);
 }

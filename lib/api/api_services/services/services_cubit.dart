@@ -66,7 +66,7 @@ class ServicesCubit extends Cubit<ServicesState> {
         emit(ServicesError('Network error: ${e.message}'));
       }
     } catch (e) {
-      emit(ServicesError('An unexpected error occurred: $e'));
+      print("error: $e");
     }
   }
 }

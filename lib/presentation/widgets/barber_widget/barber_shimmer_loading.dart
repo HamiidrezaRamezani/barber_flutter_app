@@ -1,3 +1,4 @@
+import 'package:barber_application/presentation/system_design/app_sizes.dart';
 import 'package:barber_application/presentation/system_design/screen_size.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
@@ -25,7 +26,10 @@ class BarbersShimmerLoading extends StatelessWidget {
                   child: Container(
                     height: 120.0,
                     width: 120.0,
-                    color: Colors.white,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius:
+                            BorderRadius.circular(AppSizes.boxBorder)),
                   ),
                 ),
                 SizedBox(
@@ -33,44 +37,49 @@ class BarbersShimmerLoading extends StatelessWidget {
                 ),
                 Expanded(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Shimmer.fromColors(
-                          baseColor: Colors.grey.shade300,
-                          highlightColor: Colors.grey.shade100,
-                          child: Container(
-                            height: 30.0,
-                            width: context.width * 0.55,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Shimmer.fromColors(
+                      baseColor: Colors.grey.shade300,
+                      highlightColor: Colors.grey.shade100,
+                      child: Container(
+                        height: 30.0,
+                        width: context.width * 0.55,
+                        decoration: BoxDecoration(
                             color: Colors.white,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 6.0,
-                        ),
-                        Shimmer.fromColors(
-                          baseColor: Colors.grey.shade300,
-                          highlightColor: Colors.grey.shade100,
-                          child: Container(
-                            height: 30.0,
-                            width: context.width * 0.55,
+                            borderRadius: BorderRadius.circular(5)),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 6.0,
+                    ),
+                    Shimmer.fromColors(
+                      baseColor: Colors.grey.shade300,
+                      highlightColor: Colors.grey.shade100,
+                      child: Container(
+                        height: 30.0,
+                        width: context.width * 0.55,
+                        decoration: BoxDecoration(
                             color: Colors.white,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 6.0,
-                        ),
-                        Shimmer.fromColors(
-                          baseColor: Colors.grey.shade300,
-                          highlightColor: Colors.grey.shade100,
-                          child: Container(
-                            height: 30.0,
-                            width: context.width * 0.55,
+                            borderRadius: BorderRadius.circular(5)),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 6.0,
+                    ),
+                    Shimmer.fromColors(
+                      baseColor: Colors.grey.shade300,
+                      highlightColor: Colors.grey.shade100,
+                      child: Container(
+                        height: 30.0,
+                        width: context.width * 0.55,
+                        decoration: BoxDecoration(
                             color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    )),
-
+                            borderRadius: BorderRadius.circular(5)),
+                      ),
+                    ),
+                  ],
+                )),
               ],
             ),
           );

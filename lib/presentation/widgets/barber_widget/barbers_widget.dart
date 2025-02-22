@@ -25,9 +25,11 @@ class _BarbersWidgetState extends State<BarbersWidget> {
       child: BlocBuilder<BarbersCubit, BarbersState>(
         builder: (context, state) {
           if (state is BarbersLoading) {
+            print("999999999999999999999999999999999999999999999");
             barbersListItems.clear();
             return BarbersShimmerLoading();
           } else if (state is BarbersLoaded) {
+            print("8888888888888888888888888888888888888");
             for (var element in state.barber) {
               barbersListItems.add(BarbersUiModels(
                   name: element.fullname,
@@ -51,6 +53,7 @@ class _BarbersWidgetState extends State<BarbersWidget> {
                   );
                 });
           } else if (state is BarbersError) {
+            print("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
             return Center(child: Text(state.message));
           } else {
             return Center(child: Text('Unexpected state'));

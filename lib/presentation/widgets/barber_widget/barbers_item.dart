@@ -1,11 +1,12 @@
 import 'package:barber_application/presentation/system_design/app_icons.dart';
+import 'package:barber_application/presentation/system_design/app_images.dart';
 import 'package:barber_application/presentation/system_design/app_sizes.dart';
 import 'package:barber_application/presentation/system_design/app_typography.dart';
 import 'package:barber_application/presentation/system_design/screen_size.dart';
 import 'package:barber_application/presentation/ui/core/ui_models/barbers_ui_models.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../system_design/app_colors.dart';
 
 class BarbersItem extends StatelessWidget {
@@ -40,9 +41,33 @@ class BarbersItem extends StatelessWidget {
                 padding: EdgeInsets.all(6.0),
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(AppSizes.imageBorder),
-                    child: Image.network(
-                      items[index].avatar,
+                    child: CachedNetworkImage(
+                      imageUrl: items[index].avatar,
+                      height: 42,
+                      width: 42,
                       fit: BoxFit.cover,
+                      useOldImageOnUrlChange: false,
+                      fadeInDuration: Duration(milliseconds: 300),
+                      placeholderFadeInDuration: Duration(milliseconds: 300),
+                      maxWidthDiskCache: 100,
+                      // بهینه‌سازی کش برای کاهش مصرف رم
+                      maxHeightDiskCache: 100,
+                      placeholder: (context, url) => SizedBox(
+                        height: 24,
+                        width: 24,
+                        child: Center(
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        ),
+                      ),
+                      errorWidget: (context, url, error) => ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.asset(
+                          AppImages.logo, // عکس پیش‌فرض
+                          height: 42,
+                          width: 42,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     )),
               ),
             ),

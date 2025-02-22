@@ -1,7 +1,7 @@
 import 'package:barber_application/presentation/system_design/app_colors.dart';
-import 'package:barber_application/presentation/system_design/app_images.dart';
 import 'package:barber_application/presentation/system_design/app_typography.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
 
 class ServicesItem extends StatelessWidget {
   final String title;
@@ -20,15 +20,17 @@ class ServicesItem extends StatelessWidget {
       padding: EdgeInsets.only(left: 16.0, right: 16.0),
       child: Column(
         children: [
-          (image == '')
-              ? Image.asset(
-                  AppImages.logo,
-                  height: 42,
-                )
-              : Image.network(
-                  image,
-                  height: 42,
-                ),
+          CachedNetworkImage(
+            imageUrl: image,
+            height: 42,
+            useOldImageOnUrlChange: false,
+            fadeInDuration: Duration(milliseconds: 300),
+            placeholderFadeInDuration: Duration(milliseconds: 300),
+            placeholder: (context, url) => CircularProgressIndicator(),
+            errorWidget: (context, url, error) {
+              return Icon(Icons.error);
+            },
+          ),
           SizedBox(
             height: 8.0,
           ),

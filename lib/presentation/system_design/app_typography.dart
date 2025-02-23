@@ -10,7 +10,7 @@ class AppTypography {
       );
 
   static TextStyle subheading({Color color = Colors.black}) => TextStyle(
-        fontSize: 18,
+        fontSize: 16,
         fontFamily: "bold",
         color: color,
       );

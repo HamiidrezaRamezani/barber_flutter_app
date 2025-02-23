@@ -1,14 +1,18 @@
 import 'package:barber_application/presentation/system_design/app_icons.dart';
-import 'package:barber_application/presentation/system_design/app_images.dart';
 import 'package:barber_application/presentation/system_design/app_sizes.dart';
 import 'package:barber_application/presentation/system_design/app_typography.dart';
+import 'package:barber_application/presentation/system_design/screen_size.dart';
+import 'package:barber_application/presentation/ui/core/ui_models/barbers_ui_models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../system_design/app_colors.dart';
 
 class BarbersItem extends StatelessWidget {
-  const BarbersItem({super.key});
+  final List<BarbersUiModels> items;
+  final int index;
+
+  const BarbersItem({super.key, required this.items, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +40,9 @@ class BarbersItem extends StatelessWidget {
                 padding: EdgeInsets.all(6.0),
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(AppSizes.imageBorder),
-                    child: Image.asset(
-                      AppImages.user,
-                      fit: BoxFit.fill,
+                    child: Image.network(
+                      items[index].avatar,
+                      fit: BoxFit.cover,
                     )),
               ),
             ),
@@ -51,42 +55,59 @@ class BarbersItem extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Text(
-                      "William Rojer Salon",
-                      style: AppTypography.subheading(
-                          color: AppColors.primaryTextColor),
-                    ), 
-                    SizedBox(width: 5.0,), 
-                    SvgPicture.asset(AppIcons.tickIcon)
+                    SizedBox(
+                      width: context.width * 0.45,
+                      child: Text(
+                        items[index].name,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTypography.subheading(
+                            color: AppColors.primaryTextColor),
+                      ),
+                    ),
+                    (items[index].isShop == false)
+                        ? Container()
+                        : SvgPicture.asset(AppIcons.tickIcon)
                   ],
                 ),
-                SizedBox(height: 6.0,),
+                SizedBox(
+                  height: 6.0,
+                ),
                 Row(
                   children: [
-                    Text(
-                      "Haircut ,Face Shave ,Skin Fades",
-                      style: AppTypography.body(
-                          color: AppColors.secondaryTextColor),
+                    Expanded(
+                      child: Text(
+                        items[index].services.join(', '),
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTypography.body(
+                            color: AppColors.secondaryTextColor),
+                      ),
                     )
                   ],
                 ),
-                SizedBox(height: 12.0,),
+                SizedBox(
+                  height: 12.0,
+                ),
                 Row(
                   children: [
                     Text(
-                      "5.0 Kms",
+                      "${items[index].distance.toString()} Kms",
                       style: AppTypography.caption(
                           color: AppColors.primaryBtnColor),
                     ),
-                    SizedBox(width: 5.0,),
+                    SizedBox(
+                      width: 5.0,
+                    ),
                     Container(
                       height: 16.0,
                       width: 1.0,
                       color: AppColors.secondaryTextColor,
                     ),
-                    SizedBox(width: 5.0,),
-                    Expanded(child: Text(
-                      "Haircut ,Face Shave ,Skin Fades",
+                    SizedBox(
+                      width: 5.0,
+                    ),
+                    Expanded(
+                        child: Text(
+                      items[index].address,
                       overflow: TextOverflow.ellipsis,
                       style: AppTypography.body(
                           color: AppColors.secondaryTextColor),
@@ -113,7 +134,7 @@ class BarbersItem extends StatelessWidget {
                         size: 12.0,
                       ),
                       Text(
-                        "4.1",
+                        "${items[index].rate}",
                         style: AppTypography.subheading6(
                             color: AppColors.goldColor),
                       )

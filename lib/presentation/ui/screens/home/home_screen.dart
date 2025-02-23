@@ -212,6 +212,8 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 21.0,
             ),
+            // Flexible(
+            //     child: ),
             BarbersWidget(),
             SizedBox(
               height: 26.0,

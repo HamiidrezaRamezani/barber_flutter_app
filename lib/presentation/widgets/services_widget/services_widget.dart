@@ -1,5 +1,5 @@
 import 'package:barber_application/presentation/widgets/services_widget/services_item.dart';
-import 'package:barber_application/presentation/widgets/services_widget/services_loading.dart';
+import 'package:barber_application/presentation/widgets/services_widget/services_shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

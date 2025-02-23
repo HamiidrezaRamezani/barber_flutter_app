@@ -30,16 +30,21 @@ class BarbersCubit extends Cubit<BarbersState> {
       baseUrl: ConfigNetwork.baseUrl,
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
-    ))..interceptors.add(DioCacheInterceptor(options: cacheOptions));
+    ))
+      ..interceptors.add(DioCacheInterceptor(options: cacheOptions));
 
-    fetchBarbers(); // درخواست را پس از مقداردهی ارسال کن
+    fetchBarbers();
   }
 
-  Future<void> fetchBarbers() async {
+  Future<void> fetchBarbers({String? serviceType}) async {
     emit(BarbersLoading());
     try {
+      String url = ConfigNetwork.barbersUrl;
+      if (serviceType != null && serviceType.isNotEmpty) {
+        url += "?services=$serviceType";
+      }
       final response = await _dio.get(
-        ConfigNetwork.barbersUrl,
+        url,
         options: Options(extra: {'cachePolicy': CachePolicy.refresh}),
       );
 
@@ -54,7 +59,8 @@ class BarbersCubit extends Cubit<BarbersState> {
         if (e.response!.statusCode == 404) {
           emit(BarbersError('آرایشگری یافت نشد. (404)'));
         } else if (e.response!.statusCode == 500) {
-          emit(BarbersError('سرور مجموعه مشکل دارد. لطفا دوباره تلاش کنید. (500)'));
+          emit(BarbersError(
+              'سرور مجموعه مشکل دارد. لطفا دوباره تلاش کنید. (500)'));
         } else {
           emit(BarbersError('خطای ناشناخته: ${e.response!.statusCode}'));
         }

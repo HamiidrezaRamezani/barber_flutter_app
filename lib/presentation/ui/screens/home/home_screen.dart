@@ -1,5 +1,4 @@
 import 'package:barber_application/presentation/system_design/app_colors.dart';
-import 'package:barber_application/presentation/system_design/app_icons.dart';
 import 'package:barber_application/presentation/system_design/app_images.dart';
 import 'package:barber_application/presentation/system_design/app_sizes.dart';
 import 'package:barber_application/presentation/system_design/app_typography.dart';
@@ -7,7 +6,10 @@ import 'package:barber_application/presentation/system_design/screen_size.dart';
 import 'package:barber_application/presentation/widgets/barber_widget/barbers_widget.dart';
 import 'package:barber_application/presentation/widgets/services_widget/services_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../api/api_services/barbers/barbers_bloc.dart';
+import '../../../../api/api_services/barbers/barbers_cubit.dart';
+import '../../../widgets/filter_widget/filters_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -117,111 +119,129 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 32.0,
             ),
             Container(
+                height: 170,
                 child: Stack(
-              children: [
-                Align(
-                  alignment: Alignment.center,
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(AppSizes.imageBorder)),
-                      child: Image.asset(AppImages.banner)),
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Container(
-                      height: 140,
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        border: Border.all(
-                          color: AppColors.whiteColor.withOpacity(0.3),
-                          width: 1.0
-                        ) , 
-                        borderRadius: BorderRadius.circular(AppSizes.imageBorder)
-                      ),
-                      padding: EdgeInsets.all(13.0),
-                      child: Column(
-                        children: [
-                          Row(
+                  children: [
+                    Align(
+                      alignment: Alignment.center,
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(AppSizes.imageBorder)),
+                          child: Image.asset(AppImages.banner)),
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Container(
+                          height: 140,
+                          decoration: BoxDecoration(
+                              color: Colors.transparent,
+                              border: Border.all(
+                                  color: AppColors.whiteColor.withOpacity(0.3),
+                                  width: 1.0),
+                              borderRadius:
+                                  BorderRadius.circular(AppSizes.imageBorder)),
+                          padding: EdgeInsets.all(13.0),
+                          child: Column(
                             children: [
-                              Icon(Icons.my_location, color: AppColors.whiteColor,),
-                              SizedBox(width: 5.0,),
-                              Text("Nearby You", style: AppTypography.heading(color: AppColors.whiteColor),)
-                            ],
-                          ),
-                          SizedBox(height: 4.0,),
-                          Row(
-                            children: [
-                              Text("Find the nearest Barbar Shop to you on the map", style: AppTypography.body(color: AppColors.secondaryTextColor),)
-                            ],
-                          ),
-                          SizedBox(height: 12.0,),
-                          Row(
-                            children: [
-                              Container(
-                                height: 44.0,
-                                width: 132.0,
-                                decoration: BoxDecoration(
-                                  color: AppColors.primaryBtnColor,
-                                  borderRadius: BorderRadius.circular(AppSizes.btnBorder)
-                                ),
-                                child: Center(
-                                  child: Text("View the map", style: AppTypography.button(color: AppColors.whiteColor),),
-                                ),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.my_location,
+                                    color: AppColors.whiteColor,
+                                  ),
+                                  SizedBox(
+                                    width: 5.0,
+                                  ),
+                                  Text(
+                                    "Nearby You",
+                                    style: AppTypography.heading(
+                                        color: AppColors.whiteColor),
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                height: 4.0,
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    "Find the nearest Barbar Shop to you on the map",
+                                    style: AppTypography.body(
+                                        color: AppColors.secondaryTextColor),
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                height: 12.0,
+                              ),
+                              Row(
+                                children: [
+                                  Container(
+                                    height: 44.0,
+                                    width: 132.0,
+                                    decoration: BoxDecoration(
+                                        color: AppColors.primaryBtnColor,
+                                        borderRadius: BorderRadius.circular(
+                                            AppSizes.btnBorder)),
+                                    child: Center(
+                                      child: Text(
+                                        "View the map",
+                                        style: AppTypography.button(
+                                            color: AppColors.whiteColor),
+                                      ),
+                                    ),
+                                  )
+                                ],
                               )
                             ],
-                          )
-                        ],
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                )
-              ],
-            )),
+                    )
+                  ],
+                )),
             SizedBox(
               height: 32.0,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("100 Barber Shop/barbers", style: AppTypography.heading(color: AppColors.whiteColor),),
-                Container(
-                  height: 32,
-                  width: 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(AppSizes.tabBorderRadius),
-                    color: Colors.transparent,
-                    border: Border.all(
-                      width: 1.0,
-                      color: AppColors.whiteColor.withOpacity(0.8)
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+            BlocProvider(
+              create: (_) => BarbersCubit()..fetchBarbers(),
+              child: BlocBuilder<BarbersCubit, BarbersState>(
+                builder: (context, state) {
+                  int barberCount = 0;
+                  if (state is BarbersLoaded) {
+                    barberCount = state.barber.length;
+                  }
+
+                  return Column(
                     children: [
-                      SvgPicture.asset(AppIcons.filterIcon),
-                      SizedBox(width: 5.0,),
-                      Text("Filters", style: AppTypography.body(color: AppColors.whiteColor
-                      ),)
+                      FiltersWidget(
+                        listOfItemsLength: barberCount.toString(),
+                        onFilterSelected: (selectedService) {
+                          context
+                              .read<BarbersCubit>()
+                              .fetchBarbers(serviceType: selectedService);
+                        },
+                      ),
+                      SizedBox(height: 21.0),
+                      BarbersWidget(),
                     ],
-                  ),
-                )
-              ],
+                  );
+                },
+              ),
             ),
-            SizedBox(
-              height: 21.0,
-            ),
-            // Flexible(
-            //     child: ),
-            BarbersWidget(),
             SizedBox(
               height: 26.0,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Scroll ro Load more", style: AppTypography.caption(color: AppColors.secondaryTextColor),)
+                Text(
+                  "Scroll ro Load more",
+                  style: AppTypography.caption(
+                      color: AppColors.secondaryTextColor),
+                )
               ],
             ),
             SizedBox(

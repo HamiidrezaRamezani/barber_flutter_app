@@ -58,7 +58,8 @@ class ServicesCubit extends Cubit<ServicesState> {
         if (e.response!.statusCode == 404) {
           emit(ServicesError('سرویس مد نظر یافت نشد. (404)'));
         } else if (e.response!.statusCode == 500) {
-          emit(ServicesError('سرور مجموعه مشکل دارد. لطفا دوباره تلاش کنید. (500)'));
+          emit(ServicesError(
+              'سرور مجموعه مشکل دارد. لطفا دوباره تلاش کنید. (500)'));
         } else {
           emit(ServicesError('خطای ناشناخته: ${e.response!.statusCode}'));
         }

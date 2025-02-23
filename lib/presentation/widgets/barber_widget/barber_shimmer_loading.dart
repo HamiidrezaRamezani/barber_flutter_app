@@ -12,79 +12,79 @@ class BarbersShimmerLoading extends StatelessWidget {
       height: 400.0,
       width: MediaQuery.of(context).size.width,
       child: ListView.builder(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemCount: 4,
-        itemBuilder: (BuildContext context, int index) {
-          return Padding(
-            padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
-            child: Row(
-              children: [
-                Shimmer.fromColors(
-                  baseColor: Colors.grey.shade300,
-                  highlightColor: Colors.grey.shade100,
-                  child: Container(
-                    height: 120.0,
-                    width: 120.0,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius:
-                            BorderRadius.circular(AppSizes.boxBorder)),
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          itemCount: 4,
+          itemBuilder: (BuildContext context, int index) {
+            return Padding(
+              padding: EdgeInsets.only( bottom: 16.0),
+              child: Row(
+                children: [
+                  Shimmer.fromColors(
+                    baseColor: Colors.grey.shade300,
+                    highlightColor: Colors.grey.shade100,
+                    child: Container(
+                      height: 120.0,
+                      width: 120.0,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                              BorderRadius.circular(AppSizes.boxBorder)),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 8.0,
-                ),
-                Expanded(
-                    child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Shimmer.fromColors(
-                      baseColor: Colors.grey.shade300,
-                      highlightColor: Colors.grey.shade100,
-                      child: Container(
-                        height: 30.0,
-                        width: context.width * 0.55,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5)),
+                  SizedBox(
+                    height: 8.0,
+                  ),
+                  Expanded(
+                      child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade100,
+                        child: Container(
+                          height: 30.0,
+                          width: context.width * 0.65,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5)),
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 6.0,
-                    ),
-                    Shimmer.fromColors(
-                      baseColor: Colors.grey.shade300,
-                      highlightColor: Colors.grey.shade100,
-                      child: Container(
-                        height: 30.0,
-                        width: context.width * 0.55,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5)),
+                      SizedBox(
+                        height: 6.0,
                       ),
-                    ),
-                    SizedBox(
-                      height: 6.0,
-                    ),
-                    Shimmer.fromColors(
-                      baseColor: Colors.grey.shade300,
-                      highlightColor: Colors.grey.shade100,
-                      child: Container(
-                        height: 30.0,
-                        width: context.width * 0.55,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5)),
+                      Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade100,
+                        child: Container(
+                          height: 30.0,
+                          width: context.width * 0.65,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5)),
+                        ),
                       ),
-                    ),
-                  ],
-                )),
-              ],
-            ),
-          );
-        },
-      ),
+                      SizedBox(
+                        height: 6.0,
+                      ),
+                      Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade100,
+                        child: Container(
+                          height: 30.0,
+                          width: context.width * 0.65,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5)),
+                        ),
+                      ),
+                    ],
+                  )),
+                ],
+              ),
+            );
+          },
+        ),
     );
   }
 }

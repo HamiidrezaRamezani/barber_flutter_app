@@ -5,7 +5,6 @@ import 'package:barber_application/presentation/widgets/services_widget/services
 import 'package:barber_application/presentation/widgets/services_widget/services_shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../api/api_services/services/services_bloc.dart';
 import '../../../api/api_services/services/services_cubit.dart';
 
@@ -45,6 +44,7 @@ class _ServicesWidgetState extends State<ServicesWidget> {
             return ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: state.services.length,
+                reverse: true, // این مقدار رو true کردم چون ایتم های اولش تصویر نداشت برای اینکه 4 تای اخرش تصویر داشت
                 itemBuilder: (BuildContext context, int index) {
                   final service = state.services[index];
                   return ServicesItem(

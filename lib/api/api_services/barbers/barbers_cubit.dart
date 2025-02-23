@@ -52,14 +52,14 @@ class BarbersCubit extends Cubit<BarbersState> {
     } on DioException catch (e) {
       if (e.response != null) {
         if (e.response!.statusCode == 404) {
-          emit(BarbersError('Barbers not found (404)'));
+          emit(BarbersError('آرایشگری یافت نشد. (404)'));
         } else if (e.response!.statusCode == 500) {
-          emit(BarbersError('Server error (500). Please try again later.'));
+          emit(BarbersError('سرور مجموعه مشکل دارد. لطفا دوباره تلاش کنید. (500)'));
         } else {
-          emit(BarbersError('An error occurred: ${e.response!.statusCode}'));
+          emit(BarbersError('خطای ناشناخته: ${e.response!.statusCode}'));
         }
       } else {
-        emit(BarbersError('Network error: ${e.message}'));
+        emit(BarbersError('اینترنت متصل نیست: ${e.message}'));
       }
     } catch (e) {
       print("error: $e");

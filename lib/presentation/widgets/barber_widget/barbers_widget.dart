@@ -1,3 +1,4 @@
+import 'package:barber_application/presentation/system_design/screen_size.dart';
 import 'package:barber_application/presentation/ui/core/ui_models/barbers_ui_models.dart';
 import 'package:barber_application/presentation/widgets/barber_widget/barbers_item.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,8 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../../api/api_services/barbers/barbers_bloc.dart';
 import '../../../api/api_services/barbers/barbers_cubit.dart';
+import '../../system_design/app_colors.dart';
+import '../../system_design/app_sizes.dart';
 import 'barber_shimmer_loading.dart';
 
 class BarbersWidget extends StatefulWidget {
@@ -25,11 +28,9 @@ class _BarbersWidgetState extends State<BarbersWidget> {
       child: BlocBuilder<BarbersCubit, BarbersState>(
         builder: (context, state) {
           if (state is BarbersLoading) {
-            print("999999999999999999999999999999999999999999999");
             barbersListItems.clear();
             return BarbersShimmerLoading();
           } else if (state is BarbersLoaded) {
-            print("8888888888888888888888888888888888888");
             for (var element in state.barber) {
               barbersListItems.add(BarbersUiModels(
                   name: element.fullname,
@@ -53,8 +54,20 @@ class _BarbersWidgetState extends State<BarbersWidget> {
                   );
                 });
           } else if (state is BarbersError) {
-            print("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
-            return Center(child: Text(state.message));
+            return Container(
+              height: 70.0,
+              width: context.width,
+              decoration: BoxDecoration(
+                  color: AppColors.errorColor,
+                  borderRadius: BorderRadius.circular(AppSizes.boxBorder)
+              ),
+              child: Center(
+                child: Text(
+                  state.message,
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+              ),
+            );
           } else {
             return Center(child: Text('Unexpected state'));
           }

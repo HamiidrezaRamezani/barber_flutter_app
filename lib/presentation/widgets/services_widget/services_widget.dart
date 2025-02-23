@@ -1,3 +1,6 @@
+import 'package:barber_application/presentation/system_design/app_colors.dart';
+import 'package:barber_application/presentation/system_design/app_sizes.dart';
+import 'package:barber_application/presentation/system_design/screen_size.dart';
 import 'package:barber_application/presentation/widgets/services_widget/services_item.dart';
 import 'package:barber_application/presentation/widgets/services_widget/services_shimmer_loading.dart';
 import 'package:flutter/material.dart';
@@ -23,10 +26,19 @@ class _ServicesWidgetState extends State<ServicesWidget> {
           if (state is ServicesLoading) {
             return ServicesShimmerLoading();
           } else if (state is ServicesError) {
-            return Center(
-              child: Text(
-                state.message,
-                style: TextStyle(color: Colors.red, fontSize: 16),
+            // برای بخش ارور هندلینگ
+            return Container(
+              height: 70.0,
+              width: context.width,
+              decoration: BoxDecoration(
+                color: AppColors.errorColor,
+                borderRadius: BorderRadius.circular(AppSizes.boxBorder)
+              ),
+              child: Center(
+                child: Text(
+                  state.message,
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
               ),
             );
           } else if (state is ServicesLoaded) {

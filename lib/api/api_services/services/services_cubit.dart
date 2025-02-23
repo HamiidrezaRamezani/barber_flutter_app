@@ -56,14 +56,14 @@ class ServicesCubit extends Cubit<ServicesState> {
     } on DioException catch (e) {
       if (e.response != null) {
         if (e.response!.statusCode == 404) {
-          emit(ServicesError('Services not found (404)'));
+          emit(ServicesError('سرویس مد نظر یافت نشد. (404)'));
         } else if (e.response!.statusCode == 500) {
-          emit(ServicesError('Server error (500). Please try again later.'));
+          emit(ServicesError('سرور مجموعه مشکل دارد. لطفا دوباره تلاش کنید. (500)'));
         } else {
-          emit(ServicesError('An error occurred: ${e.response!.statusCode}'));
+          emit(ServicesError('خطای ناشناخته: ${e.response!.statusCode}'));
         }
       } else {
-        emit(ServicesError('Network error: ${e.message}'));
+        emit(ServicesError('اینترنت متصل نیست: ${e.message}'));
       }
     } catch (e) {
       print("error: $e");

@@ -25,7 +25,9 @@ class FilterItem extends StatelessWidget {
             width: 1.0, color: AppColors.whiteColor.withOpacity(0.8)),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+        padding: EdgeInsets.only(
+            left: AppSizes.smallMarginPadding,
+            right: AppSizes.smallMarginPadding),
         child: Center(
           child: Text(
             filterUiSelectItems[index].name,

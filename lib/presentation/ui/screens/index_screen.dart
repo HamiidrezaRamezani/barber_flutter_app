@@ -1,5 +1,4 @@
 import 'package:barber_application/presentation/system_design/app_sizes.dart';
-import 'package:barber_application/presentation/system_design/app_sizes.dart';
 import 'package:barber_application/presentation/ui/screens/home/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,29 +26,29 @@ class _IndexScreenState extends State<IndexScreen> {
     return [
       HomeScreen(),
       Container(
-        color: Colors.yellow,
+        color: AppColors.goldColor,
         child: Center(
           child: Text(
             "BookMark Screen",
-            style: TextStyle(fontSize: 24.0),
+            style: TextStyle(fontSize: AppSizes.heading1FontSize),
           ),
         ),
       ),
       Container(
-        color: Colors.green,
+        color: AppColors.errorColor,
         child: Center(
           child: Text(
             "Map Screen",
-            style: TextStyle(fontSize: 24.0),
+            style: TextStyle(fontSize: AppSizes.heading1FontSize),
           ),
         ),
       ),
       Container(
-        color: Colors.grey,
+        color: AppColors.primaryTextColor,
         child: Center(
           child: Text(
             "Account Screen",
-            style: TextStyle(fontSize: 24.0),
+            style: TextStyle(fontSize: AppSizes.heading1FontSize),
           ),
         ),
       ),
@@ -117,7 +116,7 @@ class _IndexScreenState extends State<IndexScreen> {
       resizeToAvoidBottomInset: true,
       stateManagement: true,
       hideNavigationBarWhenKeyboardAppears: true,
-      padding: const EdgeInsets.only(top: 8),
+      padding: EdgeInsets.only(top: AppSizes.smallMarginPadding),
       backgroundColor: AppColors.whiteColor,
       isVisible: true,
       animationSettings: const NavBarAnimationSettings(

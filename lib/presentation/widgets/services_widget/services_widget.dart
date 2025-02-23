@@ -36,7 +36,7 @@ class _ServicesWidgetState extends State<ServicesWidget> {
               child: Center(
                 child: Text(
                   state.message,
-                  style: TextStyle(color: Colors.white, fontSize: 16),
+                  style: TextStyle(color: Colors.white, fontSize: AppSizes.heading3FontSize),
                 ),
               ),
             );

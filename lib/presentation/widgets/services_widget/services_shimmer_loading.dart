@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../system_design/app_sizes.dart';
+
 class ServicesShimmerLoading extends StatelessWidget {
   const ServicesShimmerLoading({super.key});
 
@@ -14,7 +16,9 @@ class ServicesShimmerLoading extends StatelessWidget {
         itemCount: 4,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
-            padding: EdgeInsets.only(left: 16.0, right: 16.0),
+            padding: EdgeInsets.only(
+                left: AppSizes.largeMarginPadding,
+                right: AppSizes.largeMarginPadding),
             child: Column(
               children: [
                 Shimmer.fromColors(
@@ -27,7 +31,7 @@ class ServicesShimmerLoading extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 8.0,
+                  height: AppSizes.smallMarginPadding,
                 ),
                 Shimmer.fromColors(
                   baseColor: Colors.grey.shade300,

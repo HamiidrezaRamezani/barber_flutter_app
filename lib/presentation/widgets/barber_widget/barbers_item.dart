@@ -19,7 +19,7 @@ class BarbersItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 120.0,
-      margin: EdgeInsets.only(bottom: 16.0),
+      margin: EdgeInsets.only(bottom: AppSizes.largeMarginPadding),
       padding: EdgeInsets.all(2.0),
       decoration: BoxDecoration(
           gradient: LinearGradient(colors: [
@@ -38,7 +38,7 @@ class BarbersItem extends StatelessWidget {
               height: 120.0,
               width: 120.0,
               child: Padding(
-                padding: EdgeInsets.all(6.0),
+                padding: EdgeInsets.all(AppSizes.smallMarginPadding),
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(AppSizes.imageBorder),
                     child: CachedNetworkImage(
@@ -72,7 +72,7 @@ class BarbersItem extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: 8.0,
+              width: AppSizes.smallMarginPadding,
             ),
             Expanded(
                 child: Column(
@@ -95,7 +95,7 @@ class BarbersItem extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 6.0,
+                  height: AppSizes.smallMarginPadding,
                 ),
                 Row(
                   children: [
@@ -110,7 +110,7 @@ class BarbersItem extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 12.0,
+                  height: AppSizes.mediumMarginPadding,
                 ),
                 Row(
                   children: [
@@ -142,14 +142,14 @@ class BarbersItem extends StatelessWidget {
               ],
             )),
             SizedBox(
-              width: 8.0,
+              width: AppSizes.smallMarginPadding,
             ),
             Column(
               children: [
                 SizedBox(
-                  height: 16.0,
+                  height: AppSizes.largeMarginPadding,
                 ),
-                Container(
+                SizedBox(
                   width: 32,
                   child: Row(
                     children: [
@@ -169,7 +169,7 @@ class BarbersItem extends StatelessWidget {
               ],
             ),
             SizedBox(
-              width: 6.0,
+              width: AppSizes.smallMarginPadding,
             ),
           ],
         ),

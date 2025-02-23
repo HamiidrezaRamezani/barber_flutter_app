@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: AppColors.primaryBackgroundColor,
       body: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(AppSizes.normalMarginPadding),
         child: ListView(
           children: [
             SizedBox(
@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Positioned(
                       right: 0.0,
-                      top: 13,
+                      top: AppSizes.mediumMarginPadding,
                       child: Container(
                         height: 30.0,
                         width: 100.0,
@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             SizedBox(
-              height: 16.0,
+              height: AppSizes.largeMarginPadding,
             ),
             Container(
               height: 48.0,
@@ -109,16 +109,16 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             SizedBox(
-              height: 32.0,
+              height: AppSizes.extraLargeMarginPadding,
             ),
             SizedBox(
               height: 70,
               child: ServicesWidget(),
             ),
             SizedBox(
-              height: 32.0,
+              height: AppSizes.extraLargeMarginPadding,
             ),
-            Container(
+            SizedBox(
                 height: 170,
                 child: Stack(
                   children: [
@@ -132,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Align(
                       alignment: Alignment.center,
                       child: Padding(
-                        padding: EdgeInsets.all(10.0),
+                        padding: EdgeInsets.all(AppSizes.normalMarginPadding),
                         child: Container(
                           height: 140,
                           decoration: BoxDecoration(
@@ -142,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   width: 1.0),
                               borderRadius:
                                   BorderRadius.circular(AppSizes.imageBorder)),
-                          padding: EdgeInsets.all(13.0),
+                          padding: EdgeInsets.all(AppSizes.mediumMarginPadding),
                           child: Column(
                             children: [
                               Row(
@@ -174,7 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ],
                               ),
                               SizedBox(
-                                height: 12.0,
+                                height: AppSizes.mediumMarginPadding,
                               ),
                               Row(
                                 children: [
@@ -203,7 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 )),
             SizedBox(
-              height: 32.0,
+              height: AppSizes.extraLargeMarginPadding,
             ),
             BlocProvider(
               create: (_) => BarbersCubit()..fetchBarbers(),
@@ -224,7 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               .fetchBarbers(serviceType: selectedService);
                         },
                       ),
-                      SizedBox(height: 21.0),
+                      SizedBox(height: AppSizes.extraLargeMarginPadding),
                       BarbersWidget(),
                     ],
                   );
@@ -232,7 +232,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             SizedBox(
-              height: 26.0,
+              height: AppSizes.extraLargeMarginPadding,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

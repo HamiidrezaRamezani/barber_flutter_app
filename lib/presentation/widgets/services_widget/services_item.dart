@@ -3,6 +3,8 @@ import 'package:barber_application/presentation/system_design/app_typography.dar
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+import '../../system_design/app_sizes.dart';
+
 class ServicesItem extends StatelessWidget {
   final String title;
   final String slug;
@@ -17,7 +19,7 @@ class ServicesItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 16.0, right: 16.0),
+      padding: EdgeInsets.only(left: AppSizes.largeMarginPadding, right: AppSizes.largeMarginPadding),
       child: Column(
         children: [
           CachedNetworkImage(
@@ -32,7 +34,7 @@ class ServicesItem extends StatelessWidget {
             },
           ),
           SizedBox(
-            height: 8.0,
+            height: AppSizes.smallMarginPadding,
           ),
           Text(
             title,

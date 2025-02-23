@@ -54,7 +54,7 @@ class _FiltersWidgetState extends State<FiltersWidget> {
               child: Center(
                 child: Text(
                   state.message,
-                  style: TextStyle(color: Colors.white, fontSize: 14),
+                  style: TextStyle(color: Colors.white, fontSize: AppSizes.heading3FontSize),
                 ),
               ),
             );
@@ -123,7 +123,8 @@ class _FiltersWidgetState extends State<FiltersWidget> {
                 (isOpenFilter == true)
                     ? Container(
                         height: 42,
-                        margin: EdgeInsets.only(top: 24.0),
+                        margin: EdgeInsets.only(
+                            top: AppSizes.extraLargeMarginPadding),
                         width: context.width,
                         child: ListView.builder(
                             scrollDirection: Axis.horizontal,
@@ -131,8 +132,10 @@ class _FiltersWidgetState extends State<FiltersWidget> {
                             itemCount: filterUiSelectItems.length,
                             itemBuilder: (BuildContext context, int index) {
                               return Padding(
-                                padding: const EdgeInsets.only(
-                                    right: 8.0, top: 4.0, bottom: 4.0),
+                                padding: EdgeInsets.only(
+                                    right: AppSizes.smallMarginPadding,
+                                    top: 4.0,
+                                    bottom: 4.0),
                                 child: InkWell(
                                     borderRadius: BorderRadius.circular(
                                         AppSizes.tabBorderRadius),

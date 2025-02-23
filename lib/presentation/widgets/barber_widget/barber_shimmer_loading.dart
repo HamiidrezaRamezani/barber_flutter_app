@@ -17,7 +17,7 @@ class BarbersShimmerLoading extends StatelessWidget {
           itemCount: 4,
           itemBuilder: (BuildContext context, int index) {
             return Padding(
-              padding: EdgeInsets.only( bottom: 16.0),
+              padding: EdgeInsets.only( bottom: AppSizes.largeMarginPadding),
               child: Row(
                 children: [
                   Shimmer.fromColors(
@@ -33,7 +33,7 @@ class BarbersShimmerLoading extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 8.0,
+                    height: AppSizes.smallMarginPadding,
                   ),
                   Expanded(
                       child: Column(
@@ -51,7 +51,7 @@ class BarbersShimmerLoading extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 6.0,
+                        height: AppSizes.smallMarginPadding,
                       ),
                       Shimmer.fromColors(
                         baseColor: Colors.grey.shade300,
@@ -65,7 +65,7 @@ class BarbersShimmerLoading extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 6.0,
+                        height: AppSizes.smallMarginPadding,
                       ),
                       Shimmer.fromColors(
                         baseColor: Colors.grey.shade300,
